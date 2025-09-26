@@ -5,6 +5,11 @@ interface UseAutoResizeTextareaProps {
     maxHeight?: number;
 }
 
+
+
+
+
+
 export function useAutoResizeTextarea({
     minHeight,
     maxHeight,

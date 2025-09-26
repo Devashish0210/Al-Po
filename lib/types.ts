@@ -1,6 +1,7 @@
 interface LeaveEntitlements {
     total: number | null;
     used: number;
+    
     pending: number;
     reserved: number;
     available: number | null;
