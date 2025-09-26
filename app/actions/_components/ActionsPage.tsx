@@ -12,25 +12,32 @@ const ActionsPage = () => {
           <DetailsCard />
           <CardLink
             href="/documents"
-            bodyText="Request a copy of your documents such as PF Statement, Payslips, Relieving Letter, etc."
+            bodyText=" Click here for NDC status, Final Settlement, Relieving or Service letter, Payslips, PF statement, Form16 and more."
             headerText="Self-Service"
-            className="bg-[#5591B7] text-background w-[15rem] h-[25rem] rounded-sm"
+            className="bg-[#5591B7] text-background w-[15rem] h-[27rem] rounded-sm"
             icon="self-service.png"
           />
           <CardLink
             href="/faqs"
             bodyText="Read frequently asked questions after the exit process."
             headerText="FAQs"
-            className="bg-[#3A577E] text-background w-[15rem] h-[25rem] rounded-sm"
+            className="bg-[#3A577E] text-background w-[15rem] h-[27rem] rounded-sm"
             icon="faq.png"
           />
           <CardLink
             href="/tickets"
             bodyText="Raise a ticket with Admin, CIS, Finance and HR teams."
             headerText="Raise a Ticket"
-            className="bg-[#003A69] text-background w-[15rem] h-[25rem] rounded-sm"
+            className="bg-[#003A69] text-background w-[15rem] h-[27rem] rounded-sm"
             icon="tickets.png"
           />
+          {/* <CardLink
+            href="/chat"
+            bodyText="Raise a ticket with Admin, CIS, Finance and HR teams."
+            headerText="MIA"
+            className="bg-[#003A69] text-background w-[15rem] h-[25rem] rounded-sm"
+            icon="https://aicoedevstatefilestorage.blob.core.windows.net/ml35app/ml-mia-chatbot-logo.png"
+          /> */}
         </div>
       </section>
     </>

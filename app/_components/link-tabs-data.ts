@@ -12,6 +12,10 @@ export const linkTabsData = {
       title: "Raise a Ticket",
       href: "/tickets",
     },
+    // {
+    //   title: "Ask MIA",
+    //   href: "/mia-chat",
+    // },
   ],
   style: {
     container: {},

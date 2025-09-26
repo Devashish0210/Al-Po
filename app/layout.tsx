@@ -34,7 +34,9 @@ export default function RootLayout({
         <body className={poppins.className}>
           <Providers>
             <PageContainer>
+              {/* <NavBar /> */}
               <div className="min-h-[72vh]">{children}</div>
+              {/* <Footer /> */}
             </PageContainer>
           </Providers>
         </body>

@@ -16,16 +16,17 @@ export default function PageContainer({
   const path = usePathname();
   const router = useRouter();
 
-  const [loading, setLoading] = useState(true);
+  // Define public routes that don't need authentication or redirection
+  const publicRoutes = [
+    "/service-down",
+    "/adminui/login",
+    "/adminui/main",
+    "/adminui/relieving-letter",
+    "/adminui/remove-ndc",
+  ];
+  const isPublicRoute = publicRoutes.includes(path);
 
   useEffect(() => {
-    const bypassRoutes = ["/adminui/login", "/adminui/main", "/service-down"];
-
-    if (bypassRoutes.includes(path)) {
-      setLoading(false);
-      return;
-    }
-
     const wait = async () => {
       const res = await checkServerStatus();
       if (res) {
@@ -35,22 +36,31 @@ export default function PageContainer({
       }
     };
 
-    wait();
-  }, [path]);
+    if (isPublicRoute) {
+      // Don't check server for public routes and don't redirect
+      setLoading(false);
+    } else {
+      wait();
+    }
+  }, [path, router, isPublicRoute]);
 
-  if (loading) return <Loading />;
+  const [loading, setLoading] = useState(true);
 
-  if (
-    path === "/adminui/login" ||
-    path === "/adminui/main" ||
-    "/adminui/remove-ndc"
-  ) {
-    return <>{children}</>; // No wrapper for these routes
+  // Return appropriate layout based on path
+  if (loading) {
+    return <Loading />;
   }
 
-  return path === "/employee-verification" ? (
-    <PageAuthenticatorBGV>{children}</PageAuthenticatorBGV>
-  ) : (
-    <PageAuthenticatorMain path={path}>{children}</PageAuthenticatorMain>
-  );
+  // For public routes that aren't service-down or BGV verification, render children directly
+  if (isPublicRoute && path !== "/service-down") {
+    return <>{children}</>;
+  }
+
+  // For special routes, use their specific authenticators
+  if (path === "/employee-verification") {
+    return <PageAuthenticatorBGV>{children}</PageAuthenticatorBGV>;
+  }
+
+  // Default case - use the main authenticator
+  return <PageAuthenticatorMain path={path}>{children}</PageAuthenticatorMain>;
 }

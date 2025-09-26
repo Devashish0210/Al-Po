@@ -22,7 +22,7 @@ export default function LinkTabs({
   selected: number;
 }) {
   return (
-    <div className="flex flex-wrap w-full justify-evenly items-center">
+    <div className="flex w-full justify-evenly items-end">
       {data.map((value, index) => {
         return index === selected ? (
           <div className="flex flex-col justify-center items-start gap-2">
@@ -41,7 +41,7 @@ export default function LinkTabs({
         ) : (
           <div className="flex flex-col justify-center items-start gap-2">
             <div className="h-8 w-[20rem] p-4">
-              {/* {index === 0 && <NameComponent />} */}
+              {index === 0 && <NameComponent />}
             </div>
             <Link href={value.href} className="text-white" key={index}>
               <div className="bg-secondary p-2 w-[20rem] m-4">
